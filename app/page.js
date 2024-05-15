@@ -1,113 +1,362 @@
-import Image from 'next/image'
+/* eslint-disable react/jsx-key */
+"use client";
+import { createContext, useState } from "react";
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import ReactSwitch from "react-switch";
+import style from "./style.module.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Home() {
+// Animation on Scrolls react reveal
+import Fade from "react-reveal/Fade";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
+import { metadata } from "./layout";
+
+export const ThemeContext = createContext(null);
+
+export default function Page() {
+  const imgProf = {
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+    position: "absolute",
+    bottom: "0.8rem",
+    right: "0.8rem",
+  };
+
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={style.MainContainer} id={theme}>
+        {/* Navbar */}
+        <div className="navbar">
+          <ReactSwitch onChange={toggleTheme} checked={theme === "light"} />
+          <div className="teks">
+            <Link href="#about">About</Link>
+            <Link href="#skill">Skills</Link>
+            <Link href="#project">Projects</Link>
+          </div>
+        </div>
+
+        {/* Header */}
+        <div className="headerContainer">
+          <div class="custom-shape-divider-bottom-1694916749">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                className="shape-fill"
+              ></path>
+            </svg>
+          </div>
+          <Fade top>
+            <div className="pp">
+              {/* <p className="strong">SAMUEL</p>
+              <p className="strong1">SAMUEL</p>
+              <p className="strong2">SAMUEL</p>
+              <p className="strong3">SAMUEL</p> */}
+              <Image
+                src={"/hd-pp.png"}
+                width={180}
+                height={170}
+                alt="profile photo"
+                style={{
+                  borderRadius: "50%",
+                  filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                }}
+              />
+              <h1>Samuel Andhika Prasetyo</h1>
+              <p>
+                <span>Front</span>-End Developer
+              </p>
+              <div className="switch">
+                <label>{theme === "dark" ? "Dark Mode" : "Light Mode"}</label>
+                <ReactSwitch
+                  onChange={toggleTheme}
+                  checked={theme === "light"}
+                />
+              </div>
+            </div>
+            <div className="scrolls">
+              <div className="line"></div>
+              <p>Scrolls</p>
+            </div>
+          </Fade>
+        </div>
+
+        {/*============= About =============*/}
+        <div className="aboutContainer" id="about">
+          <div className="number">
+            <h1>01</h1>
+            <div className="line"></div>
+          </div>
+          <div className="adjust">
+            <Fade bottom cascade>
+              <div className="left">
+                <div className="imgBorder">
+                  <Image
+                    style={imgProf}
+                    className="img"
+                    src={"/profile2.png"}
+                    width={353}
+                    height={675}
+                    alt="img"
+                  />
+                </div>
+              </div>
+              <div className="right">
+                <div className="teks">
+                  <div className="discover">
+                    <p>Discover</p>
+                    <div className="line"></div>
+                  </div>
+                  <div className="about">
+                    <h1>About Me</h1>
+                    <p>
+                      Hello, my name is Samuel Andhika Prasetyo. I am currently
+                      a grade 12 student of the Software and Game Development
+                      Skills Program at SMK Wikrama Bogor. I am currently
+                      developing my skills in Front End Development. I also
+                      learning to use the Javascript programming language and
+                      laravel framework at the moment. I still a beginner in
+                      this field, but I will continue to learn until I master it
+                      to achieve my dream.
+                    </p>
+                    <div className="circle1"></div>
+                    <div className="circle2"></div>
+                  </div>
+                </div>
+                <div className="boxProfile">
+                  <div className="left">
+                    <p>Name: Samuel Andhika Prasetyo</p>
+                    <p>Phone: +62 812 7292 9203</p>
+                    <p>Occupation: Student</p>
+                    <p>Instagram: samuel.andika</p>
+                  </div>
+                  <div className="right">
+                    <p>Age: 17</p>
+                    <p>Address: Belitung Timur, Indonesia</p>
+                    <p>-</p>
+                    <p>-</p>
+                  </div>
+                </div>
+              </div>
+            </Fade>
+          </div>
+        </div>
+
+        {/*============= Skills =============*/}
+        <div className="skillContainer" id="skill">
+          <Fade bottom cascade>
+            <div className="number">
+              <h1>02</h1>
+              <div className="line"></div>
+            </div>
+            <div className="title">
+              <h1>
+                S<span>K</span>ILLS
+              </h1>
+            </div>
+          </Fade>
+          <Fade left cascade>
+            <div className="skills">
+              <Swiper
+                modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
+                loop={true}
+                spaceBetween={30}
+                slidesPerView={3}
+                autoplay={{
+                  delay: 2000,
+                }}
+                navigation
+                pagination={true}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+                style={{
+                  margin: "0 6rem",
+                }}
+              >
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/html2.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>HTML</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/css2.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>CSS</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/laravel.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>Laravel</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/nextjs-icon.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                    style={{
+                      marginTop: "3rem",
+                      marginBottom: "2rem",
+                    }}
+                  />
+                  <p>Next Js</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/nuxtjs.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>Nuxt Js</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/react.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>React</p>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <Image
+                    className="img"
+                    src={"/vue.png"}
+                    width={156}
+                    height={163}
+                    alt="img"
+                  />
+                  <p>Vue Js</p>
+                </SwiperSlide>
+                ...
+              </Swiper>
+            </div>
+          </Fade>
+        </div>
+
+        {/*============= Projects =============*/}
+        <div className="projectContainer" id="project">
+          <Fade left cascade>
+            <div className="number">
+              <div className="dummy"></div>
+              <div className="bookmark"></div>
+              <div className="adjust">
+                <h1>03</h1>
+                <div className="line"></div>
+              </div>
+            </div>
+            <div className="title">
+              <h1>
+                PR<span>O</span>JECTS
+              </h1>
+            </div>
+            <div className="projects">
+              <Swiper
+                modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
+                loop={true}
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={true}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+                style={{
+                  margin: "0 8rem",
+                }}
+              >
+                <SwiperSlide className="slide">
+                  <div className="card">
+                    <div className="img"
+                    ></div>
+                    <div className="bookmark">
+                      <div className="labels"></div>
+                    </div>
+                    <div className="box">
+                      <h1>Article</h1>
+                      <p>
+                        Nullam ullamcorper urna in arcu condimentum, imperdiet
+                        auctor quam consequat. Aenean efficitur leo leo, nec
+                        interdum ipsum dapibus sit amet. Donec non tincidunt
+                        orci, et lobortis sem. Phasellus at nulla sem. In mattis
+                        et dui et facilisis. Quisque mollis vulputate lorem,
+                        sollicitudin ultrices lectus. Nunc volutpat eros ut
+                        cursus feugiat.
+                      </p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="slide">
+                  <div className="card">
+                    <div className="img2"
+                    ></div>
+                    <div className="bookmark">
+                      <div className="labels"></div>
+                    </div>
+                    <div className="box">
+                      <h1>Plants Report</h1>
+                      <p>
+                        Nullam ullamcorper urna in arcu condimentum, imperdiet
+                        auctor quam consequat. Aenean efficitur leo leo, nec
+                        interdum ipsum dapibus sit amet. Donec non tincidunt
+                        orci, et lobortis sem. Phasellus at nulla sem. In mattis
+                        et dui et facilisis. Quisque mollis vulputate lorem,
+                        sollicitudin ultrices lectus. Nunc volutpat eros ut
+                        cursus feugiat.
+                      </p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+          </Fade>
+        </div>
+        <div className="copyright">
+          <p>Copy Right © 2023 Samuel Andhika Prasetyo</p>
+        </div>
+
+
+        <div className="Test">
+          
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </ThemeContext.Provider>
+  );
 }
