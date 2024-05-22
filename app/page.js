@@ -114,7 +114,7 @@ export default function Page() {
                     className="img"
                     src={"/profile2.png"}
                     width={353}
-                    height={675}
+                    height={475}
                     alt="img"
                   />
                 </div>
@@ -137,22 +137,22 @@ export default function Page() {
                       this field, but I will continue to learn until I master it
                       to achieve my dream.
                     </p>
-                    <div className="circle1"></div>
-                    <div className="circle2"></div>
+                    {/* <div className="circle1"></div>
+                    <div className="circle2"></div> */}
                   </div>
                 </div>
                 <div className="boxProfile">
                   <div className="left">
                     <p>Name: Samuel Andhika Prasetyo</p>
+                    <p>Age: 17</p>
                     <p>Phone: +62 812 7292 9203</p>
-                    <p>Occupation: Student</p>
-                    <p>Instagram: samuel.andika</p>
+                    <p>Address: Belitung Timur, Indonesia</p>
                   </div>
                   <div className="right">
-                    <p>Age: 17</p>
-                    <p>Address: Belitung Timur, Indonesia</p>
-                    <p>-</p>
-                    <p>-</p>
+                    <p>Status: Fresh Graduate</p>
+                    <p>Instagram: samuel.andika</p>
+                    <p>Email: samuelandika600@gmail.com</p>
+                    <p>Hobbies: Listening Music, Swimming</p>
                   </div>
                 </div>
               </div>
@@ -225,12 +225,12 @@ export default function Page() {
                   <Image
                     className="img"
                     src={"/nextjs-icon.png"}
-                    width={156}
-                    height={163}
+                    width={250}
+                    height={150}
                     alt="img"
                     style={{
-                      marginTop: "3rem",
-                      marginBottom: "2rem",
+                      // marginTop: "3rem",
+                      // marginBottom: "2rem",
                     }}
                   />
                   <p>Next Js</p>
