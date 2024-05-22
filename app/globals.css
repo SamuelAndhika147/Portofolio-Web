@@ -421,7 +421,7 @@ body {
 .aboutContainer .right .boxProfile {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
   width: 100%;
@@ -443,6 +443,8 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1.2rem;
+  margin: 0;
+  width: 50%;
 }
 
 .aboutContainer .right .boxProfile .left p {
@@ -455,10 +457,12 @@ body {
 
 .aboutContainer .right .boxProfile .right {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1.2rem;
+  margin: 0;
+  width: 50%;
 }
 
 .aboutContainer .right .boxProfile .right p {
@@ -479,6 +483,16 @@ body {
     align-items: center;
     width: 100%;
     height: auto;
+  }
+
+  .aboutContainer .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
   }
 
   .aboutContainer .right .teks .discover {
@@ -624,7 +638,7 @@ body {
 .projectContainer .number .bookmark {
   width: 0;
 	height: 0;
-	border-top: 200px solid rgb(99, 19, 19);
+	border-top: 100px solid rgb(99, 19, 19);
 	border-right: 80px solid rgb(125, 26, 26);
 	border-bottom: 80px solid transparent;
 	border-left: 80px solid rgb(34, 40, 49);
@@ -639,7 +653,7 @@ body {
 }
 
 #light .projectContainer .number .bookmark {
-  border-top: 200px solid rgb(254, 135, 171);
+  border-top: 100px solid rgb(254, 135, 171);
 	border-right: 80px solid rgb(252, 81, 133);
 	border-bottom: 80px solid transparent;
 	border-left: 80px solid rgb(255, 192, 211);

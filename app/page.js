@@ -178,8 +178,8 @@ export default function Page() {
               <Swiper
                 modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
                 loop={true}
-                spaceBetween={30}
-                slidesPerView={3}
+                spaceBetween={10}
+                slidesPerView={1}
                 autoplay={{
                   delay: 2000,
                 }}
